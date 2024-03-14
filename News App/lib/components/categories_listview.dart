@@ -9,19 +9,19 @@ class CategoriesListView extends StatelessWidget {
   Widget build(BuildContext context) {
     List<CategoryModel> categories = [
       CategoryModel(
-        imagePath: "assets/general.avif",
+        imagePath: "assets/topNews.jpeg",
         text: "Top",
       ),
       CategoryModel(
-        imagePath: "assets/business.avif",
+        imagePath: "assets/business.jpeg",
         text: "Business",
       ),
       CategoryModel(
-        imagePath: "assets/entertaiment.avif",
+        imagePath: "assets/entertainment.jpeg",
         text: "Entertainment",
       ),
       CategoryModel(
-        imagePath: "assets/sports.avif",
+        imagePath: "assets/sports.jpeg",
         text: "Sports",
       ),
       CategoryModel(
@@ -31,6 +31,10 @@ class CategoriesListView extends StatelessWidget {
       CategoryModel(
         imagePath: "assets/science.avif",
         text: "Science",
+      ),
+      CategoryModel(
+        imagePath: "assets/technology.jpeg",
+        text: "Technology",
       ),
     ];
     return SizedBox(
