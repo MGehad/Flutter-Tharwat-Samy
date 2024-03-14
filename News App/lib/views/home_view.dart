@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:news_app_ui_setup/components/NewsListViewBuilder.dart';
-import '../components/categories_listview.dart';
+import '../components/my_custom_scroll_view.dart';
+import '../components/my_text_field.dart';
 
 class MyHomeView extends StatelessWidget {
+  const MyHomeView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+        title:
+            const Row(mainAxisAlignment: MainAxisAlignment.center, children: [
           Text(
             "News",
             style: TextStyle(color: Colors.black),
@@ -22,16 +25,12 @@ class MyHomeView extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
-        child: CustomScrollView(
-          physics: BouncingScrollPhysics(),
-          slivers: [
-            SliverToBoxAdapter(child: CategoriesListView()),
-            SliverToBoxAdapter(
-              child: SizedBox(height: 10),
-            ),
-            NewsListViewBuilder(category: 'sports'),
-          ],
-        ),
+        child: Column(children: [
+          MyTextField(),
+          const Expanded(
+            child: MyCustomScrollView(),
+          ),
+        ]),
       ),
     );
   }

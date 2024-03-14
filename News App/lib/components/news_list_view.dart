@@ -4,9 +4,9 @@ import 'package:news_app_ui_setup/components/news_card.dart';
 import 'package:news_app_ui_setup/models/article_model.dart';
 
 class NewsListView extends StatelessWidget {
-  List<ArticleModel> articles;
+  final List<ArticleModel> articles;
 
-  NewsListView({super.key, required this.articles});
+  const NewsListView({super.key, required this.articles});
 
   @override
   Widget build(BuildContext context) {

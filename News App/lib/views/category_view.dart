@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-
-import '../components/NewsListViewBuilder.dart';
+import '../components/news_list_view_builder.dart';
 
 class CategoryView extends StatelessWidget {
-  String category;
+  final String category;
 
-  CategoryView({super.key, required this.category});
+  const CategoryView({super.key, required this.category});
 
   @override
   Widget build(BuildContext context) {

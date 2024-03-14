@@ -1,12 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app_ui_setup/views/category_view.dart';
 import '../models/category_model.dart';
 
 class CategoryCard extends StatefulWidget {
-  CategoryModel model;
+  final CategoryModel model;
 
-  CategoryCard({super.key, required this.model});
+  const CategoryCard({super.key, required this.model});
 
   @override
   State<CategoryCard> createState() => _CategoryCardState();
@@ -26,8 +25,7 @@ class _CategoryCardState extends State<CategoryCard> {
       child: Padding(
         padding: const EdgeInsets.all(8),
         child: Container(
-          height: 130,
-          width: 220,
+          width: MediaQuery.of(context).size.width * 0.55,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
             image: DecorationImage(
@@ -37,7 +35,7 @@ class _CategoryCardState extends State<CategoryCard> {
           ),
           child: Center(
               child: Text(widget.model.text,
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: Colors.white,
                       fontSize: 17,
                       fontWeight: FontWeight.bold))),

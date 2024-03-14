@@ -3,21 +3,27 @@ import 'package:news_app_ui_setup/models/article_model.dart';
 
 class NewsService {
   String category;
+  String? word;
 
-  NewsService({required this.category});
+  NewsService({required this.category, this.word});
 
   var dio = Dio();
 
   Future<List<ArticleModel>> getNews() async {
     try {
-      Response response =
-          await dio.get("https://newsapi.org/v2/top-headlines?country=us"
-              "&apiKey=e95a84d8e15245c7b5c7d0ecf5420397"
-              "&category=$category");
+      String api =
+          "https://newsdata.io/api/1/news?apikey=pub_400093626bdad4aab4d18c2f96d1d0a844c37"
+          "&language=ar"
+          "&category=$category";
+      if (word != null) {
+        api = "$api&qInTitle=$word";
+      }
+
+      Response response = await dio.get(api);
 
       Map<String, dynamic> jsonData = response.data;
 
-      List<dynamic> articles = jsonData['articles'];
+      List<dynamic> articles = jsonData['results'];
 
       List<ArticleModel> models = [];
 

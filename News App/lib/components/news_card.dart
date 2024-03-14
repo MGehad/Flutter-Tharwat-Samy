@@ -3,9 +3,9 @@ import 'package:news_app_ui_setup/models/article_model.dart';
 import 'package:news_app_ui_setup/views/web_view_article.dart';
 
 class NewsTile extends StatelessWidget {
-  ArticleModel model;
+  final ArticleModel model;
 
-  NewsTile({required this.model});
+  const NewsTile({super.key, required this.model});
 
   @override
   Widget build(BuildContext context) {
@@ -23,21 +23,29 @@ class NewsTile extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
-              child: Image.network(model.imagePath ??
-                  "https://encrypted-tbn0.gstatic.com/images?"
-                      "q=tbn:ANd9GcQgZc8Hq5iEEsN5Br94I2wkhogI5l2KZS6KINCamNy0Xg&s"),
+              child: Image.network(
+                model.imagePath ??
+                    "https://encrypted-tbn0.gstatic.com/images?"
+                        "q=tbn:ANd9GcQgZc8Hq5iEEsN5Br94I2wkhogI5l2KZS6KINCamNy0Xg&s",
+                errorBuilder: (context, error, stackTrace) {
+                  return const Icon(
+                    Icons.error,
+                    size: 70,
+                  );
+                },
+              ),
             ),
             Text(model.title,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(
+                style: const TextStyle(
                     fontWeight: FontWeight.w500,
                     fontSize: 20,
                     color: Colors.black87)),
             Text(model.subtitle ?? '',
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(color: Colors.grey, fontSize: 14)),
+                style: const TextStyle(color: Colors.grey, fontSize: 14)),
           ],
         ),
       ),

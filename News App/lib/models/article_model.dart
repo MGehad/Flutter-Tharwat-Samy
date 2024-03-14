@@ -14,7 +14,7 @@ class ArticleModel {
     return ArticleModel(
         title: json['title'],
         subtitle: json['description'],
-        imagePath: json['urlToImage'],
-        articleLink: json['url']);
+        imagePath: json['image_url'],
+        articleLink: json['link']);
   }
 }
