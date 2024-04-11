@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             primarySwatch: state is WeatherLoadedState
-                ? getColorTheme(state.WeatherModel.listOfDays[0].status)
+                ? getColorTheme(state.WeatherModel.listOfDays[state.dayNumber].status)
                 : Colors.blue,
           ),
           home: const HomeView(),

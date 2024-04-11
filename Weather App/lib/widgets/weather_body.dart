@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_app/cubits/weather_cubit/get_weather_cubit.dart';
 import 'package:weather_app/widgets/day_weather_column.dart';
 import '../main.dart';
 import '../models/weather_data_model.dart';
@@ -39,6 +41,8 @@ class _WeatherBodyState extends State<WeatherBody> {
                 onPressed: () {
                   setState(() {
                     if (0 < n) n--;
+                    BlocProvider.of<GetWeatherCubit>(context).getCurrentWeather(
+                        city: widget.model.cityName, dayNumber: n);
                   });
                 },
                 icon: Container(
@@ -65,6 +69,8 @@ class _WeatherBodyState extends State<WeatherBody> {
                 onPressed: () {
                   setState(() {
                     if (widget.model.listOfDays.length - 1 > n) n++;
+                    BlocProvider.of<GetWeatherCubit>(context).getCurrentWeather(
+                        city: widget.model.cityName, dayNumber: n);
                   });
                 },
                 icon: Container(

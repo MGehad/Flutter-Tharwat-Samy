@@ -29,7 +29,7 @@ class SearchView extends StatelessWidget {
             onSubmitted: (value) async {
               if (value.isNotEmpty) {
                 BlocProvider.of<GetWeatherCubit>(context)
-                    .getCurrentWeather(city: value);
+                    .getCurrentWeather(city: value, dayNumber: 0);
                 Navigator.pop(context);
               }
             },
@@ -44,7 +44,7 @@ class SearchView extends StatelessWidget {
                 onPressed: () {
                   if (city.text != '') {
                     BlocProvider.of<GetWeatherCubit>(context)
-                        .getCurrentWeather(city: city.text);
+                        .getCurrentWeather(city: city.text, dayNumber: 0);
                     Navigator.pop(context);
                   }
                 },

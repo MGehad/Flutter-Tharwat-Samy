@@ -6,8 +6,9 @@ class InitialWeatherState extends WeatherState {}
 
 class WeatherLoadedState extends WeatherState {
   final WeatherDataModle WeatherModel;
+  final int dayNumber;
 
-  WeatherLoadedState({required this.WeatherModel});
+  WeatherLoadedState({required this.WeatherModel,required this.dayNumber});
 }
 
 class WeatherErrorState extends WeatherState {
