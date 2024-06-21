@@ -23,7 +23,7 @@ class AddTextButton extends StatelessWidget {
           backgroundColor: MaterialStatePropertyAll(Colors.indigo)),
       child: const Text(
         "Add",
-        style: TextStyle(fontSize: 20.0),
+        style: TextStyle(fontSize: 20.0, color: Colors.white),
       ),
     );
   }
