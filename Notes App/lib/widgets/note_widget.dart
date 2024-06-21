@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/models/note_model.dart';
 
 class NoteWidget extends StatelessWidget {
-  const NoteWidget({
-    super.key,
-  });
+  final NoteModel note;
+
+  const NoteWidget({super.key, required this.note});
 
   @override
   Widget build(BuildContext context) {
@@ -18,15 +19,15 @@ class NoteWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           ListTile(
-            title: const Padding(
-              padding: EdgeInsets.only(bottom: 15.0),
-              child: Text('Data'),
+            title: Padding(
+              padding: const EdgeInsets.only(bottom: 15.0),
+              child: Text(note.title),
             ),
             titleTextStyle:
                 const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             subtitle: Text(
-              'Build Your App Build Your App Build Your App Build Your App Build Your App Build Your App ',
-              style: TextStyle(fontSize: 18.0),
+              note.subtitle,
+              style: const TextStyle(fontSize: 18.0),
             ),
             trailing: IconButton(
               iconSize: 32,
@@ -37,11 +38,11 @@ class NoteWidget extends StatelessWidget {
             ),
             onTap: () {},
           ),
-          const Padding(
-            padding: EdgeInsets.only(right: 18.0, top: 8.0, bottom: 2.0),
+          Padding(
+            padding: const EdgeInsets.only(right: 18.0, top: 8.0, bottom: 2.0),
             child: Text(
-              'May 21,2022',
-              style: TextStyle(fontSize: 15.0),
+              note.date,
+              style: const TextStyle(fontSize: 15.0),
             ),
           )
         ],
