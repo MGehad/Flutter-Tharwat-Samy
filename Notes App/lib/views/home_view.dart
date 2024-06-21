@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/models/note_model.dart';
+import '../widgets/note_floating_action_button.dart';
 import '../widgets/note_widget.dart';
 
 class HomeView extends StatelessWidget {
   final VoidCallback toggleDarkMode;
 
-  HomeView({required this.toggleDarkMode});
+  const HomeView({super.key, required this.toggleDarkMode});
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +50,7 @@ class HomeView extends StatelessWidget {
     ];
     return Scaffold(
       appBar: buildAppBar(),
-      floatingActionButton: buildFloatingActionButton(),
+      floatingActionButton: const NoteFloatingActionButton(),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 15.0),
         child: ListView.builder(
@@ -63,14 +64,6 @@ class HomeView extends StatelessWidget {
           },
         ),
       ),
-    );
-  }
-
-  FloatingActionButton buildFloatingActionButton() {
-    return FloatingActionButton(
-      shape: const CircleBorder(),
-      onPressed: () {},
-      child: const Icon(Icons.add),
     );
   }
 
