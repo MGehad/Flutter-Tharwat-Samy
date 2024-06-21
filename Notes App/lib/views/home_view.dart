@@ -14,25 +14,54 @@ class HomeView extends StatelessWidget {
           title: "Title",
           subtitle:
               "subtitlesubti tlesubt itlesub titlesub subtitlesu btitle title subtitle",
-          date: "21-5-2022"),
-      NoteModel(title: "title", subtitle: "subtitle", date: "date"),
-      NoteModel(title: "title", subtitle: "subtitle", date: "date"),
-      NoteModel(title: "title", subtitle: "subtitle", date: "date"),
-      NoteModel(title: "title", subtitle: "subtitle", date: "date"),
-      NoteModel(title: "title", subtitle: "subtitle", date: "date"),
-      NoteModel(title: "title", subtitle: "subtitle", date: "date"),
+          date: "21-5-2022",
+          color: Colors.teal),
+      NoteModel(
+          title: "title",
+          subtitle: "subtitle",
+          date: "21-5-2024",
+          color: Colors.deepOrange),
+      NoteModel(
+          title: "title",
+          subtitle: "subtitle",
+          date: "21-5-2024",
+          color: Colors.black87),
+      NoteModel(
+          title: "title",
+          subtitle: "subtitle",
+          date: "21-5-2025",
+          color: Colors.indigoAccent),
+      NoteModel(
+          title: "title",
+          subtitle: "subtitle",
+          date: "21-5-2027",
+          color: Colors.purple),
+      NoteModel(
+          title: "title",
+          subtitle: "subtitle",
+          date: "21-5-2028",
+          color: Colors.pink),
+      NoteModel(
+          title: "title",
+          subtitle: "subtitle",
+          date: "21-5-2020",
+          color: Colors.orangeAccent),
     ];
     return Scaffold(
       appBar: buildAppBar(),
       floatingActionButton: buildFloatingActionButton(),
-      body: ListView.builder(
-        physics: const BouncingScrollPhysics(),
-        itemCount: notes.length,
-        itemBuilder: (context, index) {
-          return NoteWidget(
-            note: notes[index],
-          );
-        },
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 15.0),
+        child: ListView.builder(
+          clipBehavior: Clip.none,
+          physics: const BouncingScrollPhysics(),
+          itemCount: notes.length,
+          itemBuilder: (context, index) {
+            return NoteWidget(
+              note: notes[index],
+            );
+          },
+        ),
       ),
     );
   }

@@ -9,10 +9,10 @@ class NoteWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+      margin: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 25.0),
       padding: const EdgeInsets.only(top: 15.0, bottom: 15.0, left: 15.0),
       decoration: BoxDecoration(
-        color: Colors.green,
+        color: note.color,
         borderRadius: BorderRadius.circular(15.0),
       ),
       child: Column(
