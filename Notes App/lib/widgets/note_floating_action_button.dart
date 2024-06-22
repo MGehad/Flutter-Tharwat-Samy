@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/widgets/add_note_bottom_sheet.dart';
+import '../constants.dart';
 
 class NoteFloatingActionButton extends StatelessWidget {
   const NoteFloatingActionButton({super.key});
@@ -8,13 +9,17 @@ class NoteFloatingActionButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton(
       shape: const CircleBorder(),
+      backgroundColor: primaryColor,
       onPressed: () {
         showModalBottomSheet(
           context: context,
           builder: (context) => AddNoteBottomSheet(),
         );
       },
-      child: const Icon(Icons.add),
+      child: const Icon(
+        Icons.add,
+        size: 32,
+      ),
     );
   }
 }

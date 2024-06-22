@@ -12,42 +12,22 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     List<NoteModel> notes = [
       NoteModel(
-          title: "Title",
-          subtitle:
-              "subtitlesubti tlesubt itlesub titlesub subtitlesu btitle title subtitle",
-          date: "21-5-2022",
-          color: Colors.teal),
+          title: 'title',
+          subtitle: 'subtitle',
+          date: '25-2-2020',
+          color: Colors.indigo),
       NoteModel(
-          title: "title",
-          subtitle: "subtitle",
-          date: "21-5-2024",
-          color: Colors.deepOrange),
+          title: 'title',
+          subtitle: 'subtitle',
+          date: '25-2-2027',
+          color: Colors.indigo),
       NoteModel(
-          title: "title",
-          subtitle: "subtitle",
-          date: "21-5-2024",
-          color: Colors.black87),
-      NoteModel(
-          title: "title",
-          subtitle: "subtitle",
-          date: "21-5-2025",
-          color: Colors.indigoAccent),
-      NoteModel(
-          title: "title",
-          subtitle: "subtitle",
-          date: "21-5-2027",
-          color: Colors.purple),
-      NoteModel(
-          title: "title",
-          subtitle: "subtitle",
-          date: "21-5-2028",
-          color: Colors.pink),
-      NoteModel(
-          title: "title",
-          subtitle: "subtitle",
-          date: "21-5-2020",
-          color: Colors.orangeAccent),
+          title: 'title',
+          subtitle: 'subtitle',
+          date: '25-2-2025',
+          color: Colors.indigo),
     ];
+
     return Scaffold(
       appBar: buildAppBar(),
       floatingActionButton: const NoteFloatingActionButton(),
@@ -57,6 +37,7 @@ class HomeView extends StatelessWidget {
           clipBehavior: Clip.none,
           physics: const BouncingScrollPhysics(),
           itemCount: notes.length,
+         // reverse: true,
           itemBuilder: (context, index) {
             return NoteWidget(
               note: notes[index],
