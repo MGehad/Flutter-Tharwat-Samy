@@ -5,9 +5,9 @@ import '../widgets/app_text_field.dart';
 import '../widgets/color_list_view.dart';
 
 class EditNoteView extends StatelessWidget {
-  NoteModel note;
+  final NoteModel note;
 
-  EditNoteView({super.key, required this.note});
+  const EditNoteView({super.key, required this.note});
 
   @override
   Widget build(BuildContext context) {

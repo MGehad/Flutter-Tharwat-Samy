@@ -11,21 +11,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<NoteModel> notes = [
-      NoteModel(
-          title: 'title',
-          subtitle: 'subtitle',
-          date: '25-2-2020',
-          color: Colors.indigo),
-      NoteModel(
-          title: 'title',
-          subtitle: 'subtitle',
-          date: '25-2-2027',
-          color: Colors.indigo),
-      NoteModel(
-          title: 'title',
-          subtitle: 'subtitle',
-          date: '25-2-2025',
-          color: Colors.indigo),
+
     ];
 
     return Scaffold(
