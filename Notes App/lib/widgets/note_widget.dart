@@ -44,13 +44,12 @@ class NoteWidget extends StatelessWidget {
               trailing: IconButton(
                 iconSize: 32,
                 onPressed: () {
-                //  NotesData.removeNote(note);
+                  //  NotesData.removeNote(note);
                 },
                 icon: const Icon(
                   Icons.delete,
                 ),
               ),
-              onTap: () {},
             ),
             Padding(
               padding:

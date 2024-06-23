@@ -13,7 +13,7 @@ class NoteFloatingActionButton extends StatelessWidget {
       onPressed: () {
         showModalBottomSheet(
           context: context,
-          builder: (context) => AddNoteBottomSheet(),
+          builder: (context) => const AddNoteBottomSheet(),
         );
       },
       child: const Icon(

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 
 class AppTextField extends StatelessWidget {
-  String label;
-  int maxLines;
-  TextEditingController textEditingController;
+  final String label;
+  final int maxLines;
+  final TextEditingController textEditingController;
 
-  AppTextField(
+  const AppTextField(
       {super.key,
       required this.label,
       required this.maxLines,

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/constants.dart';
 
 class AddTextButton extends StatelessWidget {
-  VoidCallback onPressed;
+  final VoidCallback onPressed;
 
-  AddTextButton({super.key, required this.onPressed});
+  const AddTextButton({super.key, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {

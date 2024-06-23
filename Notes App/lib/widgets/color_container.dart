@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/models/color_model.dart';
 
 class ColorContainer extends StatelessWidget {
-  ColorModel colorModel;
-  VoidCallback onTap;
+  final ColorModel colorModel;
+  final VoidCallback onTap;
 
-  ColorContainer({super.key, required this.colorModel, required this.onTap});
+  const ColorContainer(
+      {super.key, required this.colorModel, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +20,7 @@ class ColorContainer extends StatelessWidget {
         ),
         height: 50.0,
         width: 50.0,
-        child: (colorModel.isSelected)
-            ? const Icon(Icons.check_circle_outline_rounded)
-            : null,
+        child: (colorModel.isSelected) ? const Icon(Icons.check_circle) : null,
       ),
     );
   }

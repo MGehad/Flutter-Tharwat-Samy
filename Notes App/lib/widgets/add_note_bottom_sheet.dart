@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/models/note_model.dart';
 import '../constants.dart';
 import 'add_text_button.dart';
 import 'app_text_field.dart';

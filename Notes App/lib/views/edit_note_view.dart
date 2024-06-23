@@ -59,8 +59,8 @@ class EditNoteView extends StatelessWidget {
           IconButton(
             onPressed: () {},
             icon: const Icon(
-              Icons.edit,
-              size: 28,
+              Icons.check,
+              size: 22,
             ),
             style: ButtonStyle(
               backgroundColor: MaterialStatePropertyAll(
@@ -69,7 +69,7 @@ class EditNoteView extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            width: 20.0,
+            width: 10.0,
           )
         ],
       );

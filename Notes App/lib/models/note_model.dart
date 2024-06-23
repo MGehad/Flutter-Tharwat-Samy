@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class NoteModel {
-  String title;
-  String subtitle;
-  String date;
-  Color color;
+  final String title;
+  final String subtitle;
+  final String date;
+  final Color color;
 
   NoteModel(
       {required this.title,
