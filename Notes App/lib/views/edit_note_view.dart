@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../constants.dart';
 import '../models/note_model.dart';
-import '../widgets/app_text_field.dart';
+import '../widgets/app_text_form_field.dart';
 import '../widgets/color_list_view.dart';
 
 class EditNoteView extends StatelessWidget {
@@ -27,7 +27,7 @@ class EditNoteView extends StatelessWidget {
             const SizedBox(
               height: 30.0,
             ),
-            AppTextField(
+            AppTextFormField(
               label: "Title",
               maxLines: 1,
               textEditingController: titleController,
@@ -35,7 +35,7 @@ class EditNoteView extends StatelessWidget {
             const SizedBox(
               height: 20.0,
             ),
-            AppTextField(
+            AppTextFormField(
               label: "Content",
               maxLines: 5,
               textEditingController: subtitleController,

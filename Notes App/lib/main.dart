@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:notes_app/constants.dart';
 import 'package:notes_app/views/home_view.dart';
 
-void main() {
-  runApp(MyApp());
+void main() async {
+  await Hive.initFlutter();
+  await Hive.openBox(notesBox);
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
