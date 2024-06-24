@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/cubits/add_note_cubit/add_note_cubit.dart';
+import 'package:notes_app/cubits/add_note_cubit/add_note_state.dart';
+import 'package:notes_app/models/note_model.dart';
 import '../constants.dart';
 import 'add_text_button.dart';
 import 'app_text_form_field.dart';
@@ -12,10 +16,10 @@ class NoteForm extends StatefulWidget {
 }
 
 class _NoteFormState extends State<NoteForm> {
-  TextEditingController controller1 = TextEditingController();
-  TextEditingController controller2 = TextEditingController();
+  TextEditingController titleController = TextEditingController();
+  TextEditingController subtitleController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey();
-  AutovalidateMode autovalidate = AutovalidateMode.always;
+  AutovalidateMode autovalidate = AutovalidateMode.disabled;
 
   @override
   Widget build(BuildContext context) {
@@ -27,34 +31,43 @@ class _NoteFormState extends State<NoteForm> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           SizedBox(height: 50, child: ColorListView(models: colorCircles)),
-          const SizedBox(
-            height: 30.0,
-          ),
+          const SizedBox(height: 30.0),
           AppTextFormField(
             label: "Title",
             maxLines: 1,
-            textEditingController: controller1,
+            textEditingController: titleController,
           ),
-          const SizedBox(
-            height: 20.0,
-          ),
+          const SizedBox(height: 20.0),
           AppTextFormField(
             label: "Content",
             maxLines: 5,
-            textEditingController: controller2,
+            textEditingController: subtitleController,
           ),
-          const SizedBox(
-            height: 35.0,
-          ),
-          AddTextButton(
-            onPressed: () {
-              setState(() {
+          const SizedBox(height: 35.0),
+          BlocBuilder<AddNoteCubit, AddNoteState>(
+            builder: (context, state) => AddTextButton(
+              isLoading: state is AddNoteLoadingState,
+              onPressed: () {
                 if (formKey.currentState!.validate()) {
+                  int? color;
+                  for (var element in colorCircles) {
+                    if (element.isSelected) {
+                      color = element.color.value;
+                    }
+                  }
+                  if (color != null) {
+                    NoteModel model = NoteModel(
+                        title: titleController.text,
+                        subtitle: subtitleController.text,
+                        date: DateTime.now().toString(),
+                        color: color);
+                    BlocProvider.of<AddNoteCubit>(context).addNote(model);
+                  }
                 } else {
                   autovalidate = AutovalidateMode.always;
                 }
-              });
-            },
+              },
+            ),
           )
         ],
       ),

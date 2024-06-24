@@ -3,8 +3,10 @@ import 'package:notes_app/constants.dart';
 
 class AddTextButton extends StatelessWidget {
   final VoidCallback onPressed;
+  final bool isLoading;
 
-  const AddTextButton({super.key, required this.onPressed});
+  const AddTextButton(
+      {super.key, required this.onPressed, this.isLoading = false});
 
   @override
   Widget build(BuildContext context) {
@@ -18,15 +20,16 @@ class AddTextButton extends StatelessWidget {
             ),
           ),
         ),
-        padding: MaterialStatePropertyAll(
-          EdgeInsets.symmetric(horizontal: 150.0, vertical: 10.0),
-        ),
+        minimumSize: MaterialStatePropertyAll(Size(double.maxFinite, 50)),
         backgroundColor: MaterialStatePropertyAll(primaryColor),
       ),
-      child: const Text(
-        "Add",
-        style: TextStyle(fontSize: 20.0, color: Colors.white),
-      ),
+      child: (isLoading)
+          ? const SizedBox(
+              width: 24.0, height: 24.0, child: CircularProgressIndicator())
+          : const Text(
+              "Add",
+              style: TextStyle(fontSize: 20.0, color: Colors.white),
+            ),
     );
   }
 }

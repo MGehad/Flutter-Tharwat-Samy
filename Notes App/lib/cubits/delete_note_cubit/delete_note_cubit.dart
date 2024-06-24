@@ -5,7 +5,7 @@ import '../../models/note_model.dart';
 import 'delete_note_state.dart';
 
 class DeleteNoteCubit extends Cubit<DeleteNoteState> {
-  DeleteNoteCubit(super.initialState);
+  DeleteNoteCubit() : super(DeleteNoteInitialState());
 
   deleteNote(NoteModel note) {
     try {
