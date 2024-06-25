@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../cubits/get_note_cubit/get_note_cubit.dart';
+import '../widgets/custom_icon_button.dart';
 import '../widgets/note_floating_action_button.dart';
 import '../widgets/notes_list_view.dart';
 
@@ -41,32 +42,16 @@ class _NotesViewState extends State<NotesView> {
         actions: [
           Row(
             children: [
-              IconButton(
+              CustomIconButton(
                 onPressed: () {},
-                icon: const Icon(
-                  Icons.search,
-                  size: 28,
-                ),
-                style: ButtonStyle(
-                  backgroundColor: MaterialStatePropertyAll(
-                    Colors.grey.withOpacity(0.2),
-                  ),
-                ),
+                icon: Icons.search,
               ),
               const SizedBox(
                 width: 8,
               ),
-              IconButton(
+              CustomIconButton(
                 onPressed: widget.toggleDarkMode,
-                icon: const Icon(
-                  Icons.sunny,
-                  size: 28,
-                ),
-                style: ButtonStyle(
-                  backgroundColor: MaterialStatePropertyAll(
-                    Colors.grey.withOpacity(0.2),
-                  ),
-                ),
+                icon: Icons.sunny,
               ),
               const SizedBox(
                 width: 8,
@@ -76,3 +61,5 @@ class _NotesViewState extends State<NotesView> {
         ],
       );
 }
+
+

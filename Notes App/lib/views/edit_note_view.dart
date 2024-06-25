@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import '../constants.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/cubits/get_note_cubit/get_note_cubit.dart';
+import 'package:notes_app/models/color_model.dart';
+import 'package:notes_app/widgets/custom_icon_button.dart';
 import '../models/note_model.dart';
 import '../widgets/app_text_form_field.dart';
 import '../widgets/color_list_view.dart';
@@ -16,14 +19,44 @@ class EditNoteView extends StatelessWidget {
     TextEditingController subtitleController =
         TextEditingController(text: note.subtitle);
     return Scaffold(
-      appBar: buildAppBar(),
+      appBar: AppBar(
+        elevation: 0,
+        title: const Text(
+          'Edit Note',
+          style: TextStyle(fontSize: 35, fontWeight: FontWeight.w500),
+        ),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(Icons.arrow_back_ios_new_rounded)),
+        actions: [
+          CustomIconButton(
+            icon: Icons.check,
+            onPressed: () {
+              if (titleController.text != '' && subtitleController.text != '') {
+                note.title = titleController.text;
+                note.subtitle = subtitleController.text;
+                note.color = ColorModel.getSelectedColor()!.value;
+                note.save();
+                BlocProvider.of<GetNoteCubit>(context).getAllNotes();
+                Navigator.pop(context);
+              } else {}
+            },
+          ),
+          const SizedBox(width: 12.0)
+        ],
+      ),
       body: Padding(
         padding: const EdgeInsets.only(top: 35.0, left: 25.0, right: 25.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SizedBox(height: 50, child: ColorListView(models: colorCircles)),
+            SizedBox(
+                height: 50,
+                child: ColorListView(
+                    models: ColorModel.makeColorSelected(note.color))),
             const SizedBox(
               height: 30.0,
             ),
@@ -48,29 +81,4 @@ class EditNoteView extends StatelessWidget {
       ),
     );
   }
-
-  AppBar buildAppBar() => AppBar(
-        elevation: 0,
-        title: const Text(
-          'Edit Note',
-          style: TextStyle(fontSize: 35, fontWeight: FontWeight.w500),
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.check,
-              size: 22,
-            ),
-            style: ButtonStyle(
-              backgroundColor: MaterialStatePropertyAll(
-                Colors.grey.withOpacity(0.2),
-              ),
-            ),
-          ),
-          const SizedBox(
-            width: 10.0,
-          )
-        ],
-      );
 }

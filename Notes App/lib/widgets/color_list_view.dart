@@ -26,10 +26,7 @@ class _ColorListViewState extends State<ColorListView> {
           colorModel: widget.models[index],
           onTap: () {
             setState(() {
-              for (var model in widget.models) {
-                model.isSelected = false;
-              }
-              widget.models[index].isSelected = true;
+              ColorModel.makeColorSelected(widget.models[index].color.value);
             });
           },
         );

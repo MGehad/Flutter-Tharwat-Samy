@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/models/color_model.dart';
 import '../constants.dart';
 import '../cubits/add_note_cubit/add_note_cubit.dart';
 import '../cubits/add_note_cubit/add_note_state.dart';
@@ -31,7 +32,9 @@ class _NoteFormState extends State<NoteForm> {
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SizedBox(height: 50, child: ColorListView(models: colorCircles)),
+          SizedBox(
+              height: 50,
+              child: ColorListView(models: ColorModel.clearSelected())),
           const SizedBox(height: 30.0),
           AppTextFormField(
             label: "Title",
@@ -50,18 +53,14 @@ class _NoteFormState extends State<NoteForm> {
               isLoading: state is AddNoteLoadingState,
               onPressed: () {
                 if (formKey.currentState!.validate()) {
-                  int? color;
-                  for (var element in colorCircles) {
-                    if (element.isSelected) {
-                      color = element.color.value;
-                    }
-                  }
+                  Color? color = ColorModel.getSelectedColor();
+
                   if (color != null) {
                     NoteModel model = NoteModel(
                         title: titleController.text,
                         subtitle: subtitleController.text,
                         date: DateTime.now().toString().substring(0, 16),
-                        color: color);
+                        color: color.value);
                     BlocProvider.of<AddNoteCubit>(context).addNote(model);
                     BlocProvider.of<GetNoteCubit>(context).getAllNotes();
                   }
