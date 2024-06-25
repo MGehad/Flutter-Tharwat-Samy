@@ -8,8 +8,8 @@ class DeleteNoteCubit extends Cubit<DeleteNoteState> {
   DeleteNoteCubit() : super(DeleteNoteInitialState());
 
   deleteNote(NoteModel note) {
+    emit(DeleteNoteLoadingState());
     try {
-      emit(DeleteNoteInitialState());
       var noteBox = Hive.box<NoteModel>(notesBox);
       noteBox.delete(note);
       emit(DeleteNoteSuccessState());

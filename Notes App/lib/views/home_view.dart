@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/cubits/get_note_cubit/get_note_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
 import '../widgets/note_floating_action_button.dart';
 import '../widgets/note_widget.dart';
@@ -10,25 +12,26 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<NoteModel> notes = [
+    List<NoteModel> notes = [];
 
-    ];
-
-    return Scaffold(
-      appBar: buildAppBar(),
-      floatingActionButton: const NoteFloatingActionButton(),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 15.0),
-        child: ListView.builder(
-          clipBehavior: Clip.none,
-          physics: const BouncingScrollPhysics(),
-          itemCount: notes.length,
-         // reverse: true,
-          itemBuilder: (context, index) {
-            return NoteWidget(
-              note: notes[index],
-            );
-          },
+    return BlocProvider(
+      create: (context) => GetNoteCubit(),
+      child: Scaffold(
+        appBar: buildAppBar(),
+        floatingActionButton: const NoteFloatingActionButton(),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 15.0),
+          child: ListView.builder(
+            clipBehavior: Clip.none,
+            physics: const BouncingScrollPhysics(),
+            itemCount: notes.length,
+            // reverse: true,
+            itemBuilder: (context, index) {
+              return NoteWidget(
+                note: notes[index],
+              );
+            },
+          ),
         ),
       ),
     );
