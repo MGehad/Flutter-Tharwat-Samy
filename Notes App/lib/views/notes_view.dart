@@ -43,23 +43,14 @@ class _NotesViewState extends State<NotesView> {
           Row(
             children: [
               CustomIconButton(
-                onPressed: () {},
-                icon: Icons.search,
-              ),
-              const SizedBox(
-                width: 8,
-              ),
-              CustomIconButton(
                 onPressed: widget.toggleDarkMode,
                 icon: Icons.sunny,
               ),
               const SizedBox(
-                width: 8,
+                width: 12.0,
               ),
             ],
           )
         ],
       );
 }
-
-

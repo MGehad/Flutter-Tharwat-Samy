@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/models/color_model.dart';
+
+import '../models/color_model.dart';
 
 class ColorContainer extends StatelessWidget {
   final ColorModel colorModel;

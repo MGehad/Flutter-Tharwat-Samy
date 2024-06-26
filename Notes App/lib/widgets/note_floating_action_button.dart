@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/widgets/add_note_bottom_sheet.dart';
 import '../constants.dart';
+import 'add_note_bottom_sheet.dart';
 
 class NoteFloatingActionButton extends StatelessWidget {
   const NoteFloatingActionButton({super.key});

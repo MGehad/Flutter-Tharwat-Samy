@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/constants.dart';
+
+import '../constants.dart';
 
 class AddTextButton extends StatelessWidget {
   final VoidCallback onPressed;

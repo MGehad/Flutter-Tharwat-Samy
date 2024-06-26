@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:notes_app/cubits/get_note_cubit/get_note_cubit.dart';
-import 'package:notes_app/cubits/get_note_cubit/get_note_state.dart';
-import 'package:notes_app/models/note_model.dart';
+import '../cubits/get_note_cubit/get_note_cubit.dart';
+import '../cubits/get_note_cubit/get_note_state.dart';
+import '../models/note_model.dart';
 import 'note_widget.dart';
 
 class NotesListView extends StatelessWidget {

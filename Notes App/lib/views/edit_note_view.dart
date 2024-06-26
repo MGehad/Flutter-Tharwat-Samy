@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:notes_app/cubits/get_note_cubit/get_note_cubit.dart';
-import 'package:notes_app/models/color_model.dart';
-import 'package:notes_app/widgets/custom_icon_button.dart';
+import '../cubits/get_note_cubit/get_note_cubit.dart';
+import '../models/color_model.dart';
 import '../models/note_model.dart';
 import '../widgets/app_text_form_field.dart';
 import '../widgets/color_list_view.dart';
+import '../widgets/custom_icon_button.dart';
 
 class EditNoteView extends StatelessWidget {
   final NoteModel note;
