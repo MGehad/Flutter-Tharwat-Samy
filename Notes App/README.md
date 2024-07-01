@@ -12,7 +12,6 @@
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [Acknowledgements](#acknowledgements)
 - [Contact](#contact)
 
 ## 📝 Description
