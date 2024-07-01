@@ -1,6 +1,6 @@
-import 'package:basketball_counter_app/cubits/counter_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'cubits/counter_cubit.dart';
 import 'views/home_view.dart';
 
 void main() {
