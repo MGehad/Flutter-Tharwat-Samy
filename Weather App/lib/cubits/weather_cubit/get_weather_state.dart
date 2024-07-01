@@ -5,10 +5,10 @@ class WeatherState {}
 class InitialWeatherState extends WeatherState {}
 
 class WeatherLoadedState extends WeatherState {
-  final WeatherDataModle WeatherModel;
+  final WeatherDataModel WeatherModel;
   final int dayNumber;
 
-  WeatherLoadedState({required this.WeatherModel,required this.dayNumber});
+  WeatherLoadedState({required this.WeatherModel, required this.dayNumber});
 }
 
 class WeatherErrorState extends WeatherState {

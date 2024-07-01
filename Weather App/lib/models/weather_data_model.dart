@@ -1,17 +1,17 @@
 import 'daily_weather_model.dart';
 
-class WeatherDataModle {
+class WeatherDataModel {
   final String cityName;
   final DateTime date;
   final List<DailyWeatherModel> listOfDays;
 
-  WeatherDataModle({
+  WeatherDataModel({
     required this.cityName,
     required this.date,
     required this.listOfDays,
   });
 
-  factory WeatherDataModle.fromJson(json) {
+  factory WeatherDataModel.fromJson(json) {
     List<DailyWeatherModel> days = [];
     for (var day in json['forecast']['forecastday']) {
       days.add(
@@ -19,7 +19,7 @@ class WeatherDataModle {
       );
     }
 
-    return WeatherDataModle(
+    return WeatherDataModel(
       cityName: json['location']['name'],
       date: DateTime.parse(json['current']['last_updated']),
       listOfDays: days,

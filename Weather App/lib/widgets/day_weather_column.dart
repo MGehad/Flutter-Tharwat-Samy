@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import '../models/weather_data_model.dart';
 
 class DayWeatherColumn extends StatelessWidget {
-  final WeatherDataModle model;
+  final WeatherDataModel model;
   final int n;
 
   const DayWeatherColumn({required this.model, required this.n, Key? key})

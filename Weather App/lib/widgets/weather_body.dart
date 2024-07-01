@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/cubits/weather_cubit/get_weather_cubit.dart';
-import 'package:weather_app/widgets/day_weather_column.dart';
-import '../main.dart';
+import '../cubits/weather_cubit/get_weather_cubit.dart';
+import '../helper/get_color_theme.dart';
 import '../models/weather_data_model.dart';
+import 'day_weather_column.dart';
 import 'hour_weather_container.dart';
 
 class WeatherBody extends StatefulWidget {
-  final WeatherDataModle model;
+  final WeatherDataModel model;
 
   const WeatherBody({Key? key, required this.model}) : super(key: key);
 
@@ -24,7 +24,7 @@ class _WeatherBodyState extends State<WeatherBody> {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            getColorTheme(widget.model.listOfDays[n].status),
+            GetColorTheme.getColorTheme(widget.model.listOfDays[n].status),
             Colors.white
           ],
           begin: Alignment.topCenter,

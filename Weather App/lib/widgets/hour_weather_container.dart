@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../models/hourly_weather_model.dart';
 
 class HourWeatherContainer extends StatelessWidget {
