@@ -1,5 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:scholar_chat/cubits/login_cubit/login_cubit.dart';
 import 'firebase_options.dart';
 import 'views/chat_view.dart';
 import 'views/login_view.dart';
@@ -18,15 +20,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      routes: {
-        LoginView.id: (context) => const LoginView(),
-        SignUpView.id: (context) => const SignUpView(),
-        ChatView.id: (context) => ChatView()
-      },
-      theme: ThemeData(useMaterial3: true),
-      debugShowCheckedModeBanner: false,
-      initialRoute: LoginView.id,
+    return BlocProvider(
+      create: (context) => LoginCubit(),
+      child: MaterialApp(
+        routes: {
+          LoginView.id: (context) => const LoginView(),
+          SignUpView.id: (context) => const SignUpView(),
+          ChatView.id: (context) => ChatView()
+        },
+        theme: ThemeData(useMaterial3: true),
+        debugShowCheckedModeBanner: false,
+        initialRoute: LoginView.id,
+      ),
     );
   }
 }

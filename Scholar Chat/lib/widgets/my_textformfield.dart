@@ -13,7 +13,11 @@ class MyTextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       validator: (value) {
-        if (value!.isEmpty) {
+        if (!(value!.contains('@')) ||
+            !(value.contains('.com')) ||
+            value.contains('@.')) {
+          return 'Write correct email';
+        } else if (value.isEmpty) {
           return 'This field is required';
         }
         return null;
