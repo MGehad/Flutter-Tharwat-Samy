@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:scholar_chat/consts.dart';
-import 'package:scholar_chat/models/message_model.dart';
+import '../consts.dart';
+import '../models/message_model.dart';
 import '../widgets/build_message.dart';
 
 class ChatView extends StatelessWidget {

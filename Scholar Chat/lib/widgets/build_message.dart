@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:scholar_chat/models/message_model.dart';
 import '../consts.dart';
+import '../models/message_model.dart';
 
 class MyMessage extends StatelessWidget {
   final MessageModel model;

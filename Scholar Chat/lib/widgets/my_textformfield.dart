@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../consts.dart';
 
 class MyTextFormField extends StatelessWidget {
   final String labelText;
@@ -17,6 +16,7 @@ class MyTextFormField extends StatelessWidget {
         if (value!.isEmpty) {
           return 'This field is required';
         }
+        return null;
       },
       onChanged: onChanged,
       style: const TextStyle(color: Colors.white),
@@ -63,6 +63,7 @@ class _MyPasswordFormFieldState extends State<MyPasswordFormField> {
         if (value!.isEmpty) {
           return 'This field is required';
         }
+        return null;
       },
       onChanged: widget.onChanged,
       style: const TextStyle(color: Colors.white),
@@ -85,13 +86,13 @@ class _MyPasswordFormFieldState extends State<MyPasswordFormField> {
             onPressed: () {
               setState(() {
                 isObscured = !isObscured;
-                print(isObscured);
               });
             },
             icon: Icon(
               Icons.remove_red_eye,
-              color:
-                  (isObscured == true) ? Color(0xfff006D84) : Color(0xff85fce6),
+              color: (isObscured == true)
+                  ? const Color(0xff006D84)
+                  : const Color(0xff85fce6),
             ),
           )),
     );

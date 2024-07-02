@@ -1,4 +1,4 @@
-import 'package:scholar_chat/consts.dart';
+import '../consts.dart';
 
 class MessageModel {
   String message;

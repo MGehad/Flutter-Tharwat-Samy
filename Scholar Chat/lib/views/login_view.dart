@@ -1,12 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import 'package:scholar_chat/consts.dart';
-import 'package:scholar_chat/views/sign_up_view.dart';
+import '../consts.dart';
 import '../widgets/build_show_snack_bar.dart';
 import '../widgets/my_button.dart';
 import '../widgets/my_textformfield.dart';
 import 'chat_view.dart';
+import 'sign_up_view.dart';
 
 class LoginView extends StatefulWidget {
   static String id = 'Login View';
@@ -21,6 +21,7 @@ class _LoginViewState extends State<LoginView> {
   String? email;
   String? password;
   bool isLoading = false;
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +33,7 @@ class _LoginViewState extends State<LoginView> {
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10.0),
           child: Form(
+            autovalidateMode: autovalidateMode,
             key: formKey,
             child: ListView(
               children: [
@@ -52,11 +54,13 @@ class _LoginViewState extends State<LoginView> {
                 const SizedBox(height: 110),
                 const Row(
                   children: [
-                    Text("Login",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold)),
+                    Text(
+                      "Login",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold),
+                    ),
                   ],
                 ),
                 const SizedBox(height: 15),
@@ -78,6 +82,7 @@ class _LoginViewState extends State<LoginView> {
                   child: MyButton(
                     buttonText: "Login",
                     onTap: () async {
+                      autovalidateMode = AutovalidateMode.always;
                       if (formKey.currentState!.validate()) {
                         setState(() {
                           isLoading = true;
@@ -100,7 +105,6 @@ class _LoginViewState extends State<LoginView> {
                                 context, 'The email or password is wrong');
                           }
                         } catch (e) {
-                          print('Error: $e');
                           buildShowSnackBar(
                               context, 'An unexpected error occurred.');
                         }

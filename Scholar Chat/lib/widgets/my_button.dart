@@ -4,8 +4,7 @@ class MyButton extends StatelessWidget {
   final String buttonText;
   VoidCallback? onTap;
 
-   MyButton({Key? key, required this.buttonText, this.onTap})
-      : super(key: key);
+  MyButton({Key? key, required this.buttonText, this.onTap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
