@@ -56,7 +56,7 @@ class OthersMessage extends StatelessWidget {
         margin: const EdgeInsets.all(7),
         padding: const EdgeInsets.all(20),
         decoration: const BoxDecoration(
-          color: Color(0xfff006D84),
+          color: Color(0xff006D84),
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(25),
             topLeft: Radius.circular(25),

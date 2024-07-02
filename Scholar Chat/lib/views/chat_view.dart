@@ -4,11 +4,16 @@ import '../consts.dart';
 import '../models/message_model.dart';
 import '../widgets/build_message.dart';
 
-class ChatView extends StatelessWidget {
-  static String id = 'Chat View';
+class ChatView extends StatefulWidget {
+  static const String id = 'Chat View';
 
-  ChatView({Key? key}) : super(key: key);
+  const ChatView({Key? key}) : super(key: key);
 
+  @override
+  State<ChatView> createState() => _ChatViewState();
+}
+
+class _ChatViewState extends State<ChatView> {
   CollectionReference messages =
       FirebaseFirestore.instance.collection(messagesCollection);
 

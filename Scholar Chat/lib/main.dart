@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         routes: {
           LoginView.id: (context) => const LoginView(),
           SignUpView.id: (context) => const SignUpView(),
-          ChatView.id: (context) => ChatView()
+          ChatView.id: (context) => const ChatView()
         },
         theme: ThemeData(useMaterial3: true),
         debugShowCheckedModeBanner: false,

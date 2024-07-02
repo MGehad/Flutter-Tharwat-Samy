@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class MyTextFormField extends StatelessWidget {
   final String labelText;
-  Function(String)? onChanged;
-  IconData icon;
+  final Function(String)? onChanged;
+  final IconData icon;
 
-  MyTextFormField(
+  const MyTextFormField(
       {Key? key, required this.labelText, this.onChanged, required this.icon})
       : super(key: key);
 
@@ -45,9 +45,9 @@ class MyTextFormField extends StatelessWidget {
 }
 
 class MyPasswordFormField extends StatefulWidget {
-  Function(String)? onChanged;
+  final Function(String)? onChanged;
 
-  MyPasswordFormField({
+  const MyPasswordFormField({
     Key? key,
     this.onChanged,
   }) : super(key: key);

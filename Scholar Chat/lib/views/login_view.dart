@@ -95,7 +95,7 @@ class LoginView extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 20.0, bottom: 10.0),
                     child: MyButton(
                       buttonText: "Login",
-                      onTap: () async {
+                      onTap: () {
                         autovalidateMode = AutovalidateMode.always;
                         if (formKey.currentState!.validate()) {
                           BlocProvider.of<LoginCubit>(context)

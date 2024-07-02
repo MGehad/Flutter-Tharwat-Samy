@@ -8,22 +8,20 @@ import '../widgets/build_show_snack_bar.dart';
 import '../widgets/my_button.dart';
 import '../widgets/my_textformfield.dart';
 
-class SignUpView extends StatefulWidget {
+class SignUpView extends StatelessWidget {
   static String id = 'SignUpView';
 
   const SignUpView({Key? key}) : super(key: key);
 
   @override
-  State<SignUpView> createState() => _SignUpViewState();
-}
-
-class _SignUpViewState extends State<SignUpView> {
-  String? email;
-  String? password;
-  bool isLoading = false;
-
-  @override
   Widget build(BuildContext context) {
+    String? email;
+    String? password;
+
+    bool isLoading = false;
+
+    AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+
     GlobalKey<FormState> formKey = GlobalKey();
     return BlocConsumer<SignUpCubit, SignUpState>(
       listener: (context, state) {
@@ -45,6 +43,7 @@ class _SignUpViewState extends State<SignUpView> {
           body: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: Form(
+              autovalidateMode: autovalidateMode,
               key: formKey,
               child: ListView(
                 children: [
@@ -90,7 +89,8 @@ class _SignUpViewState extends State<SignUpView> {
                     padding: const EdgeInsets.only(top: 20.0, bottom: 10.0),
                     child: MyButton(
                       buttonText: "Sign Up",
-                      onTap: () async {
+                      onTap: () {
+                        autovalidateMode = AutovalidateMode.always;
                         if (formKey.currentState!.validate()) {
                           BlocProvider.of<SignUpCubit>(context)
                               .userRegister(email: email!, password: password!);
