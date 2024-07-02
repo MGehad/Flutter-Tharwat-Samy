@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import 'package:scholar_chat/cubits/Signup_cubit/signup_cubit.dart';
-import 'package:scholar_chat/cubits/Signup_cubit/signup_state.dart';
 import '../consts.dart';
+import '../cubits/Signup_cubit/signup_cubit.dart';
+import '../cubits/Signup_cubit/signup_state.dart';
 import '../widgets/build_show_snack_bar.dart';
 import '../widgets/my_button.dart';
 import '../widgets/my_textformfield.dart';
