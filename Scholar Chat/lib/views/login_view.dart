@@ -2,8 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import 'package:scholar_chat/cubits/login_cubit/login_cubit.dart';
 import '../consts.dart';
+import '../cubits/login_cubit/login_cubit.dart';
 import '../cubits/login_cubit/login_state.dart';
 import '../widgets/build_show_snack_bar.dart';
 import '../widgets/my_button.dart';
@@ -11,23 +11,20 @@ import '../widgets/my_textformfield.dart';
 import 'chat_view.dart';
 import 'sign_up_view.dart';
 
-class LoginView extends StatefulWidget {
+class LoginView extends StatelessWidget {
   static String id = 'Login View';
 
   const LoginView({Key? key}) : super(key: key);
 
   @override
-  State<LoginView> createState() => _LoginViewState();
-}
-
-class _LoginViewState extends State<LoginView> {
-  String? email;
-  String? password;
-  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
-  bool isLoading = false;
-
-  @override
   Widget build(BuildContext context) {
+    bool isLoading = false;
+
+    String? email;
+    String? password;
+
+    AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+
     GlobalKey<FormState> formKey = GlobalKey();
     return BlocConsumer<LoginCubit, LoginState>(
       listener: (context, state) {
@@ -102,7 +99,7 @@ class _LoginViewState extends State<LoginView> {
                         autovalidateMode = AutovalidateMode.always;
                         if (formKey.currentState!.validate()) {
                           BlocProvider.of<LoginCubit>(context)
-                              .userLogin(email!, password!);
+                              .userLogin(email: email!, password: password!);
                         }
                       },
                     ),
