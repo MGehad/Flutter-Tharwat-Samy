@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:store_app/cubit/get_all_products_cubit/get_all_products_cubit.dart';
+import 'package:store_app/cubit/get_all_products_cubit/get_all_products_state.dart';
 import '../cubit/get_all_categories_cubit/get_all_categories_cubit.dart';
 import '../cubit/get_all_categories_cubit/get_all_categories_state.dart';
 import '../models/product_model.dart';
-import '../services/all_products_service.dart';
 import '../services/get_category_service.dart';
 import '../widgets/item_card.dart';
 import 'add_view.dart';
@@ -93,6 +94,7 @@ class _HomeViewState extends State<HomeView> {
 
   List<Widget> buildTabs({required List<String> categories}) {
     List<Widget> tabs = [];
+    BlocProvider.of<GetAllProductsCubit>(context).getAllProducts();
     tabs.add(allProductsFutureBuilder());
     for (var category in categories) {
       tabs.add(categoryFutureBuilder(category));
@@ -100,12 +102,11 @@ class _HomeViewState extends State<HomeView> {
     return tabs;
   }
 
-  FutureBuilder<List<ProductModel>> allProductsFutureBuilder() {
-    return FutureBuilder<List<ProductModel>>(
-      future: AllProductsService().getAllProducts(),
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          List<ProductModel> products = snapshot.data!;
+  Widget allProductsFutureBuilder() {
+    return BlocBuilder<GetAllProductsCubit, GetAllProductsState>(
+      builder: (context, state) {
+        if (state is GetAllProductsSuccessState) {
+          List<ProductModel> products = state.products;
           return Padding(
             padding: const EdgeInsets.only(right: 20.0, left: 20.0, top: 100.0),
             child: GridView.builder(
@@ -121,8 +122,14 @@ class _HomeViewState extends State<HomeView> {
               ),
             ),
           );
-        } else {
+        } else if (state is GetAllProductsLoadingState) {
           return const Center(child: CircularProgressIndicator());
+        } else {
+          return const Scaffold(
+            body: Center(
+              child: Text('Failed to load products'),
+            ),
+          );
         }
       },
     );
