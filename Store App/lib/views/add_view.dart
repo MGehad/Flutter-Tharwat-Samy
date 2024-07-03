@@ -148,7 +148,6 @@ class _AddViewState extends State<AddView> {
       ),
       controller: SingleValueDropDownController(),
       clearOption: false,
-      dropdownColor: Colors.white,
       validator: (value) {
         if (value == null) {
           return "Required field";

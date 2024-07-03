@@ -1,4 +1,4 @@
-import 'package:store_app/helper/api.dart';
+import '../helper/api.dart';
 import '../models/product_model.dart';
 
 class AllProductsService {

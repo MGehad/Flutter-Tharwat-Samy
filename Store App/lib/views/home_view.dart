@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:store_app/views/add_view.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../cubit/get_all_categories_cubit/get_all_categories_cubit.dart';
+import '../cubit/get_all_categories_cubit/get_all_categories_state.dart';
 import '../models/product_model.dart';
-import '../services/all_categories_service.dart';
 import '../services/all_products_service.dart';
 import '../services/get_category_service.dart';
 import '../widgets/item_card.dart';
+import 'add_view.dart';
 
 class HomeView extends StatefulWidget {
   static String id = 'home view';
@@ -16,35 +18,24 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  var data;
-
   @override
   void initState() {
     super.initState();
-    data = AllCategoriesService()
-        .getAllCategories()
-        .then((value) => List<String>.from(value));
+    BlocProvider.of<GetAllCategoriesCubit>(context).getAllCategories();
   }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: data,
-      builder: (context, AsyncSnapshot<List<String>> snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
+    return BlocBuilder<GetAllCategoriesCubit, GetAllCategoriesState>(
+      builder: (context, state) {
+        if (state is GetAllCategoriesLoadingState) {
           return const Scaffold(
             body: Center(
               child: CircularProgressIndicator(),
             ),
           );
-        } else if (snapshot.hasError || !snapshot.hasData) {
-          return const Scaffold(
-            body: Center(
-              child: Text('Failed to load categories'),
-            ),
-          );
-        } else {
-          List<String> categories = snapshot.data!;
+        } else if (state is GetAllCategoriesSuccessState) {
+          List<String> categories = state.data;
           return DefaultTabController(
             length: categories.length + 1,
             child: Scaffold(
@@ -71,6 +62,12 @@ class _HomeViewState extends State<HomeView> {
               body: TabBarView(
                 children: buildTabs(categories: categories),
               ),
+            ),
+          );
+        } else {
+          return const Scaffold(
+            body: Center(
+              child: Text('Failed to load categories'),
             ),
           );
         }
