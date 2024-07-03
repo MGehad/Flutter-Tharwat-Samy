@@ -9,8 +9,9 @@ class GetAllProductsCubit extends Cubit<GetAllProductsState> {
   void getAllProducts() async {
     emit(GetAllProductsLoadingState());
     try {
-      List<ProductModel> products = await AllProductsService().getAllProducts();
-      emit(GetAllProductsSuccessState(products: products));
+      List<ProductModel> allProducts =
+          await AllProductsService().getAllProducts();
+      emit(GetAllProductsSuccessState(allProducts: allProducts));
     } catch (e) {
       emit(GetAllProductsFailureState(errMessage: e.toString()));
     }

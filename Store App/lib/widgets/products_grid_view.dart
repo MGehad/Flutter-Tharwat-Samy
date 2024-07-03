@@ -1,21 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../cubit/get_all_products_cubit/get_all_products_cubit.dart';
-import '../cubit/get_all_products_cubit/get_all_products_state.dart';
+import '../cubit/get_products_cubit/get_all_products_cubit.dart';
+import '../cubit/get_products_cubit/get_all_products_state.dart';
 import '../models/product_model.dart';
 import 'item_card.dart';
 
-class AllProductsGridView extends StatelessWidget {
-  const AllProductsGridView({
+class ProductsGridView extends StatelessWidget {
+  const ProductsGridView({
     super.key,
+    required this.category,
   });
+
+  final String category;
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<GetAllProductsCubit, GetAllProductsState>(
+    BlocProvider.of<GetProductsCubit>(context).getProducts(category: category);
+
+    return BlocBuilder<GetProductsCubit, GetProductsState>(
       builder: (context, state) {
-        if (state is GetAllProductsSuccessState) {
-          List<ProductModel> products = state.allProducts;
+        if (state is GetProductsSuccessState) {
+          List<ProductModel> products = state.products;
           return Padding(
             padding: const EdgeInsets.only(right: 20.0, left: 20.0, top: 100.0),
             child: GridView.builder(
@@ -31,14 +36,8 @@ class AllProductsGridView extends StatelessWidget {
               ),
             ),
           );
-        } else if (state is GetAllProductsLoadingState) {
-          return const Center(child: CircularProgressIndicator());
         } else {
-          return const Scaffold(
-            body: Center(
-              child: Text('Failed to load products'),
-            ),
-          );
+          return const Center(child: CircularProgressIndicator());
         }
       },
     );

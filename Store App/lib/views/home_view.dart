@@ -3,10 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_app/cubit/get_all_products_cubit/get_all_products_cubit.dart';
 import '../cubit/get_all_categories_cubit/get_all_categories_cubit.dart';
 import '../cubit/get_all_categories_cubit/get_all_categories_state.dart';
-import '../models/product_model.dart';
-import '../services/get_category_service.dart';
 import '../widgets/all_products_grid_view.dart';
-import '../widgets/item_card.dart';
+import '../widgets/products_grid_view.dart';
 import 'add_view.dart';
 
 class HomeView extends StatefulWidget {
@@ -97,36 +95,8 @@ class _HomeViewState extends State<HomeView> {
     BlocProvider.of<GetAllProductsCubit>(context).getAllProducts();
     tabs.add(const AllProductsGridView());
     for (var category in categories) {
-      tabs.add(categoryFutureBuilder(category));
+      tabs.add(ProductsGridView(category: category));
     }
     return tabs;
-  }
-
-  FutureBuilder<List<ProductModel>> categoryFutureBuilder(String category) {
-    return FutureBuilder<List<ProductModel>>(
-      future: GetCategoryService().getProducts(category),
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          List<ProductModel> products = snapshot.data!;
-          return Padding(
-            padding: const EdgeInsets.only(right: 20.0, left: 20.0, top: 100.0),
-            child: GridView.builder(
-              itemCount: products.length,
-              clipBehavior: Clip.none,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  childAspectRatio: 1.5,
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 20,
-                  mainAxisSpacing: 70),
-              itemBuilder: (context, index) => ItemCard(
-                model: products[index],
-              ),
-            ),
-          );
-        } else {
-          return const Center(child: CircularProgressIndicator());
-        }
-      },
-    );
   }
 }

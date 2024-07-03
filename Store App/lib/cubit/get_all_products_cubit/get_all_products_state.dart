@@ -5,9 +5,9 @@ class GetAllProductsState {}
 class GetAllProductsInitialState extends GetAllProductsState {}
 
 class GetAllProductsSuccessState extends GetAllProductsState {
-  List<ProductModel> products;
+  List<ProductModel> allProducts;
 
-  GetAllProductsSuccessState({required this.products});
+  GetAllProductsSuccessState({required this.allProducts});
 }
 
 class GetAllProductsLoadingState extends GetAllProductsState {}
