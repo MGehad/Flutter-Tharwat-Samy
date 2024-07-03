@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_app/cubit/get_all_products_cubit/get_all_products_cubit.dart';
-import 'package:store_app/cubit/get_all_products_cubit/get_all_products_state.dart';
 import '../cubit/get_all_categories_cubit/get_all_categories_cubit.dart';
 import '../cubit/get_all_categories_cubit/get_all_categories_state.dart';
 import '../models/product_model.dart';
 import '../services/get_category_service.dart';
+import '../widgets/all_products_grid_view.dart';
 import '../widgets/item_card.dart';
 import 'add_view.dart';
 
@@ -77,62 +77,29 @@ class _HomeViewState extends State<HomeView> {
   }
 
   List<Tab> buildTabsText({required List<String> categories}) {
-    List<Tab> tabsIcon = [
+    List<Tab> tabs = [
       const Tab(
         child: Text('All'),
       ),
     ];
     for (var category in categories) {
-      tabsIcon.add(
+      tabs.add(
         Tab(
           child: Text(category[0].toUpperCase() + category.substring(1)),
         ),
       );
     }
-    return tabsIcon;
+    return tabs;
   }
 
   List<Widget> buildTabs({required List<String> categories}) {
     List<Widget> tabs = [];
     BlocProvider.of<GetAllProductsCubit>(context).getAllProducts();
-    tabs.add(allProductsFutureBuilder());
+    tabs.add(const AllProductsGridView());
     for (var category in categories) {
       tabs.add(categoryFutureBuilder(category));
     }
     return tabs;
-  }
-
-  Widget allProductsFutureBuilder() {
-    return BlocBuilder<GetAllProductsCubit, GetAllProductsState>(
-      builder: (context, state) {
-        if (state is GetAllProductsSuccessState) {
-          List<ProductModel> products = state.products;
-          return Padding(
-            padding: const EdgeInsets.only(right: 20.0, left: 20.0, top: 100.0),
-            child: GridView.builder(
-              itemCount: products.length,
-              clipBehavior: Clip.none,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  childAspectRatio: 1.5,
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 20,
-                  mainAxisSpacing: 70),
-              itemBuilder: (context, index) => ItemCard(
-                model: products[index],
-              ),
-            ),
-          );
-        } else if (state is GetAllProductsLoadingState) {
-          return const Center(child: CircularProgressIndicator());
-        } else {
-          return const Scaffold(
-            body: Center(
-              child: Text('Failed to load products'),
-            ),
-          );
-        }
-      },
-    );
   }
 
   FutureBuilder<List<ProductModel>> categoryFutureBuilder(String category) {
