@@ -4,6 +4,7 @@ import 'cubits/add_product_cubit/add_product_cubit.dart';
 import 'cubits/get_all_categories_cubit/get_all_categories_cubit.dart';
 import 'cubits/get_all_products_cubit/get_all_products_cubit.dart';
 import 'cubits/get_products_cubit/get_all_products_cubit.dart';
+import 'cubits/update_product_cubit/update_product_cubit.dart';
 import 'views/add_view.dart';
 import 'views/home_view.dart';
 import 'views/product_view.dart';
@@ -24,6 +25,7 @@ class StoreApp extends StatelessWidget {
         BlocProvider(create: (context) => GetAllProductsCubit()),
         BlocProvider(create: (context) => GetProductsCubit()),
         BlocProvider(create: (context) => AddProductCubit()),
+        BlocProvider(create: (context) => UpdateProductCubit()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
