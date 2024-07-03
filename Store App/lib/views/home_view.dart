@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:store_app/cubit/get_all_products_cubit/get_all_products_cubit.dart';
-import '../cubit/get_all_categories_cubit/get_all_categories_cubit.dart';
-import '../cubit/get_all_categories_cubit/get_all_categories_state.dart';
+import '../cubits/get_all_categories_cubit/get_all_categories_cubit.dart';
+import '../cubits/get_all_categories_cubit/get_all_categories_state.dart';
+import '../cubits/get_all_products_cubit/get_all_products_cubit.dart';
 import '../widgets/all_products_grid_view.dart';
 import '../widgets/products_grid_view.dart';
 import 'add_view.dart';

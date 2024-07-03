@@ -78,7 +78,7 @@ class _AddViewState extends State<AddView> {
                 textInputType: TextInputType.text,
               ),
               const SizedBox(height: 25),
-              my_drop_down_text_field(categories, 'Category'),
+              myDropDownTextField(categories, 'Category'),
               const SizedBox(height: 80),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 18.0),
@@ -136,8 +136,7 @@ class _AddViewState extends State<AddView> {
     );
   }
 
-  DropDownTextField my_drop_down_text_field(
-      List<String> categories, String text) {
+  DropDownTextField myDropDownTextField(List<String> categories, String text) {
     return DropDownTextField(
       textFieldDecoration: InputDecoration(
         prefixIcon: const Icon(Icons.edit),

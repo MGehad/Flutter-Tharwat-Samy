@@ -3,7 +3,7 @@ class GetAllCategoriesState {}
 class GetAllCategoriesInitialState extends GetAllCategoriesState {}
 
 class GetAllCategoriesSuccessState extends GetAllCategoriesState {
-  var data;
+  List<String> data;
 
   GetAllCategoriesSuccessState({required this.data});
 }

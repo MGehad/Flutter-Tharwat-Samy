@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../cubit/get_all_products_cubit/get_all_products_cubit.dart';
-import '../cubit/get_all_products_cubit/get_all_products_state.dart';
+import '../cubits/get_all_products_cubit/get_all_products_cubit.dart';
+import '../cubits/get_all_products_cubit/get_all_products_state.dart';
 import '../models/product_model.dart';
 import 'item_card.dart';
 

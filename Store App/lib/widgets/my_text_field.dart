@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 class MyTextField extends StatelessWidget {
-  Icon icon;
-  String text;
-  String oldText;
-  Function(String) onSubmitted;
-  TextInputType textInputType;
+  final Icon icon;
+  final String text;
+  final String oldText;
+  final Function(String) onSubmitted;
+  final TextInputType textInputType;
 
-  MyTextField(
+  const MyTextField(
       {super.key,
       required this.icon,
       required this.text,

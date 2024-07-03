@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class MyTextFormField extends StatelessWidget {
-  String text;
-  Function(String) onChanged;
-  TextInputType textInputType;
+  final String text;
+  final Function(String) onChanged;
+  final TextInputType textInputType;
 
-  MyTextFormField(
+  const MyTextFormField(
       {super.key,
       required this.text,
       required this.onChanged,
