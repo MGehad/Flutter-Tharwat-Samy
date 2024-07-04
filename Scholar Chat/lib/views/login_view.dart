@@ -2,9 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:scholar_chat/blocs/login_bloc/login_bloc.dart';
+import 'package:scholar_chat/blocs/login_bloc/login_event.dart';
+import '../blocs/login_bloc/login_state.dart';
 import '../consts.dart';
-import '../cubits/login_cubit/login_cubit.dart';
-import '../cubits/login_cubit/login_state.dart';
 import '../widgets/build_show_snack_bar.dart';
 import '../widgets/my_button.dart';
 import '../widgets/my_textformfield.dart';
@@ -26,7 +27,7 @@ class LoginView extends StatelessWidget {
     AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
     GlobalKey<FormState> formKey = GlobalKey();
-    return BlocConsumer<LoginCubit, LoginState>(
+    return BlocConsumer<LoginBloc, LoginState>(
       listener: (context, state) {
         if (state is LoginLoadingState) {
           isLoading = true;
@@ -98,8 +99,8 @@ class LoginView extends StatelessWidget {
                       onTap: () {
                         autovalidateMode = AutovalidateMode.always;
                         if (formKey.currentState!.validate()) {
-                          BlocProvider.of<LoginCubit>(context)
-                              .userLogin(email: email!, password: password!);
+                          BlocProvider.of<LoginBloc>(context).add(
+                              LoginEvent(email: email!, password: password!));
                         }
                       },
                     ),
